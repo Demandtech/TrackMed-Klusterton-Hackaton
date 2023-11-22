@@ -1,10 +1,13 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Input, Button } from '../components/reusables'
+import { useNavigate } from 'react-router-dom'
 
 const ConfirmOtp = () => {
+  const [isMounted, setIsMounted] = useState(false)
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Add your logic to handle the submitted OTP here
+    navigate('/dashboard/home')
   }
 
   const [otpValue, setOtpValue] = useState({
@@ -52,13 +55,25 @@ const ConfirmOtp = () => {
     otpValue.fourth === '' ||
     otpValue.fifth === ''
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsMounted(true)
+    }, 100)
+
+    return () => clearTimeout(timeout)
+  }, [])
+
   return (
-    <div className='text-center font-poppins pt-20 md:pt-10 pb-5'>
+    <div
+      className={`text-center font-poppins pt-20 md:pt-10 pb-5 bg-white  md:translate-x-0 transition-all duration-300 ${
+        isMounted ? 'translate-x-0' : 'translate-x-full'
+      }`}
+    >
       <p className='text-sm font-bold mb-5'>Input received OTP</p>
       <p className='text-sm'>An OTP has been sent to your phone number</p>
       <form
         onSubmit={handleSubmit}
-        className='md:mt-10 w-full md:max-w-[400px] mx-auto md:border-2 border-[#027600] shadow-[0px 0px 15px 0px #35BC5B] px-10 pt-28 md:p-10 md:rounded-[20px]'
+        className='md:mt-10 w-full md:max-w-[400px] mx-auto shadow-[0px 0px 15px 0px #35BC5B] px-10 pt-28 md:p-10 md:rounded-[20px]'
       >
         <div className='flex mb-10 justify-between'>
           {Object.keys(otpValue).map((key) => (

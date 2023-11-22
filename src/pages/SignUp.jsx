@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Button, Input, Social } from '../components/reusables'
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { useAppContext } from '../hooks'
 
 const SignUp = () => {
   const { toggleModal } = useAppContext()
+ 
 
   const [data, setData] = useState({
     first_name: '',
@@ -12,6 +13,7 @@ const SignUp = () => {
     email: '',
     password: '',
     re_password: '',
+    number: '',
   })
 
   const disabledBtn =
@@ -24,6 +26,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     toggleModal(true)
+    
   }
 
   return (
@@ -41,7 +44,7 @@ const SignUp = () => {
             placeholder={'First name'}
             className='w-full'
             value={data.first_name}
-            onchange={(e) => setData({ ...data, first_name: e.target.value })}
+            onChange={(e) => setData({ ...data, first_name: e.target.value })}
           />
         </div>
         <div>
@@ -50,7 +53,7 @@ const SignUp = () => {
             placeholder={'Last name'}
             className='w-full'
             value={data.last_name}
-            onchange={(e) => setData({ ...data, last_name: e.target.value })}
+            onChange={(e) => setData({ ...data, last_name: e.target.value })}
           />
         </div>
         <div>
@@ -59,7 +62,7 @@ const SignUp = () => {
             placeholder={'E-mail'}
             className='w-full'
             value={data.email}
-            onchange={(e) => setData({ ...data, email: e.target.value })}
+            onChange={(e) => setData({ ...data, email: e.target.value })}
           />
         </div>
         <div>
@@ -67,8 +70,8 @@ const SignUp = () => {
             type={'text'}
             placeholder={'Phone Number'}
             className='w-full'
-            value={data.email}
-            onchange={(e) => setData({ ...data, email: e.target.value })}
+            value={data.number}
+            onChange={(e) => setData({ ...data, number: e.target.value })}
           />
         </div>
         <div>
@@ -77,7 +80,7 @@ const SignUp = () => {
             type={'password'}
             placeholder={'Password'}
             value={data.password}
-            onchange={(e) => setData({ ...data, password: e.target.value })}
+            onChange={(e) => setData({ ...data, password: e.target.value })}
           />
         </div>
         <div>
@@ -86,7 +89,7 @@ const SignUp = () => {
             type={'password'}
             placeholder={'Confirm password'}
             value={data.re_password}
-            onchange={(e) => setData({ ...data, re_password: e.target.value })}
+            onChange={(e) => setData({ ...data, re_password: e.target.value })}
           />
         </div>
 
