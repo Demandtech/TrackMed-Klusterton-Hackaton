@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { Login, SignUp, Home, Dashboard } from './pages'
-import { AuthLayout, DashboardLayout } from './layouts'
+import { Login, SignUp, Home, Dashboard, ConfirmOtp } from './pages'
+import { AuthLayout, DashboardLayout, GuestLayout } from './layouts'
+
 
 const router = createBrowserRouter([
   {
@@ -15,11 +16,21 @@ const router = createBrowserRouter([
         path: 'signup',
         element: <SignUp />,
       },
+      {
+        path: 'confirm/otp',
+        element: <ConfirmOtp />,
+      },
     ],
   },
   {
     path: '/',
-    element: <Home />,
+    element: <GuestLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+    ],
   },
   {
     path: '/dashboard',
