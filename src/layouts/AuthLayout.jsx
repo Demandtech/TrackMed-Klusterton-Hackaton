@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { LogoIcon } from '../components/svgs'
+import { ConfirmationModal } from '../components'
 
 const AuthLayout = () => {
   return (
@@ -11,6 +12,7 @@ const AuthLayout = () => {
       <div className='mx-auto max-w-[600px]'>
         <Outlet />
       </div>
+      <ConfirmationModal />
     </div>
   )
 }

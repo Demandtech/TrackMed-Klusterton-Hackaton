@@ -9,6 +9,7 @@ export default {
         white50: '#f4f4f4',
         dark10: 'rgba(30, 30, 30, 0.5)',
         dark20: '#1E1E1E',
+        backdrop: 'rgba(0,0,0, 0.2)',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
