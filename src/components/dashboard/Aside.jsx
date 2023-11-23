@@ -16,8 +16,8 @@ const Aside = () => {
   const { toggleSidebar } = useAppContext()
 
   return (
-    <aside className={`bg-white md:shadow-aside  font-poppins w-full`}>
-      <ul className='flex flex-col gap-5 h-full p-2 min-h-screen  w-full md:py-10 pt-28'>
+    <aside className={`bg-white md:shadow-aside  font-poppins w-full h-full`}>
+      <ul className='flex flex-col gap-5 h-full p-2 min-h-screen  w-full pt-24 md:pt-12 '>
         <div className='items-center gap-2 hidden md:flex'>
           <UserIcon />
           <h5 className='font-bold text-2xl text-primary80'>Hi John</h5>
