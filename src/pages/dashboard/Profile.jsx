@@ -4,6 +4,7 @@ const Profile = () => {
   return (
     <div>
       <DashboardHeader message='Profile' />
+      <h1>Profile</h1>
     </div>
   )
 }

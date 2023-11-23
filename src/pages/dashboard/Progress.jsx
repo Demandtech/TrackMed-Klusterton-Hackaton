@@ -6,6 +6,7 @@ const Progress = () => {
   return (
     <div>
       <DashboardHeader message='Progress' />
+      <h1>Progress</h1>
     </div>
   )
 }
