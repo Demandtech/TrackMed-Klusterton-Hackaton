@@ -13,7 +13,7 @@ useNavigate
 
 const Aside = () => {
   const { handleLogout } = useUserContext()
-  const { isSidebarOpen, toggleSidebar } = useAppContext()
+  const { toggleSidebar } = useAppContext()
 
   return (
     <aside className={`bg-white md:shadow-aside  font-poppins w-full`}>
