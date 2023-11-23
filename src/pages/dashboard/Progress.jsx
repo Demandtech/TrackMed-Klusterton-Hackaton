@@ -1,4 +1,4 @@
-import { DashboardHeader } from '../../components'
+import { DashboardHeader, ProgressCard } from '../../components'
 
 DashboardHeader
 
@@ -6,7 +6,9 @@ const Progress = () => {
   return (
     <div>
       <DashboardHeader message='Progress' />
-      <h1>Progress</h1>
+      <div className='px-5'>
+        <ProgressCard />
+      </div>
     </div>
   )
 }

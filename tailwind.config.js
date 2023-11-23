@@ -11,6 +11,7 @@ export default {
         dark10: 'rgba(30, 30, 30, 0.5)',
         dark20: '#1E1E1E',
         backdrop: 'rgba(0,0,0, 0.2)',
+        primary10: 'rgba(53, 188, 91, 0.50)',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
