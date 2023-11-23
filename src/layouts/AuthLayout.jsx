@@ -7,7 +7,7 @@ const AuthLayout = () => {
     <div className='max-w-[1440px] mx-auto relative'>
       <Link
         to='/'
-        className='items-center hidden md:flex pl-10 pt-10 sticky top-0'
+        className='items-center flex pl-10 pt-6 md:pt-8 sticky top-0 bg-inherit'
       >
         <LogoIcon />
         <p className=' text-[#027600] font-bold font-orbitron'>TrackMed</p>
