@@ -18,7 +18,6 @@ export const AppProvider = ({ children }) => {
   }
 
   const toggleSidebar = (action) => {
-    console.log(action)
     dispatch({ type: 'TOGGLE_SIDEBAR', payload: action })
   }
 
