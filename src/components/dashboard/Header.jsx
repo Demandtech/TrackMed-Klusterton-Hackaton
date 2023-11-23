@@ -6,7 +6,7 @@ const Header = ({ message }) => {
   const { toggleSidebar } = useAppContext()
 
   return (
-    <div className='md:hidden  flex justify-between pt-10 px-4'>
+    <div className='md:hidden  flex justify-between py-5 px-4 sticky top-0 bg-white'>
       <div className='flex items-center gap-2'>
         <button
           onClick={() => {
