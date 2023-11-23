@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { Button, Input, Social } from '../components/reusables'
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useAppContext } from '../hooks'
 
 const SignUp = () => {
   const { toggleModal } = useAppContext()
- 
 
   const [data, setData] = useState({
     first_name: '',
@@ -26,7 +25,6 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     toggleModal(true)
-    
   }
 
   return (
@@ -36,7 +34,7 @@ const SignUp = () => {
       </p>
       <form
         onSubmit={handleSubmit}
-        className='flex flex-col gap-5 w-full md:max-w-[400px] mx-auto md:border-2 border-[#027600] shadow-[0px 0px 15px 0px #35BC5B] px-10 pt-20 md:p-10 md:rounded-[20px]'
+        className='flex flex-col gap-5 w-full md:max-w-[400px] mx-auto md:border-2 border-[#027600] shadow-[0px 0px 15px 0px #35BC5B] px-10 pt-10 md:pt-20 md:p-10 md:rounded-[20px]'
       >
         <div>
           <Input

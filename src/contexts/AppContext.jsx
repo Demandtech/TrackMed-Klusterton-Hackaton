@@ -7,6 +7,7 @@ export const AppContext = createContext()
 const initialState = {
   isLoading: false,
   isModalOpen: false,
+  isSidebarOpen: false,
 }
 
 export const AppProvider = ({ children }) => {
@@ -16,8 +17,13 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'TOGGLE_MODAL', payload: action })
   }
 
+  const toggleSidebar = (action) => {
+    console.log(action)
+    dispatch({ type: 'TOGGLE_SIDEBAR', payload: action })
+  }
+
   return (
-    <AppContext.Provider value={{ ...state, toggleModal }}>
+    <AppContext.Provider value={{ ...state, toggleModal, toggleSidebar }}>
       {children}
     </AppContext.Provider>
   )
