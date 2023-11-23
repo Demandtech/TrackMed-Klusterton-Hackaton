@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Input, MobileNav, WebNav } from "../components/reusables";
+import {  MobileNav, WebNav } from "../components/reusables";
 import { logotext } from "../assets/images";
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
   });
 
   return (
-    <div className=" h-screen w-screen bg-hero bg-cover bg-center">
+    <div className=" h-screen w-screen bg-hero bg-cover bg-green-200 bg-center">
       <div className="flex flex-col h-full">
         <div className="mb-20 flex-grow">
           <WebNav />

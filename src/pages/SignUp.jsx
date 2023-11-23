@@ -1,15 +1,31 @@
 import { useState } from 'react'
 import { Button, Input, Social } from '../components/reusables'
 import { Link } from 'react-router-dom'
+import { useAppContext } from '../hooks'
 
 const SignUp = () => {
+  const { toggleModal } = useAppContext()
+
   const [data, setData] = useState({
     first_name: '',
     last_name: '',
     email: '',
     password: '',
     re_password: '',
+    number: '',
   })
+
+  const disabledBtn =
+    data.first_name == '' ||
+    data.last_name == '' ||
+    data.email == '' ||
+    data.password == '' ||
+    data.re_password == ''
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    toggleModal(true)
+  }
 
   return (
     <div className='text-center font-poppins pb-5'>
@@ -17,8 +33,8 @@ const SignUp = () => {
         Welcome new user!! Please fill in the form correctly to get started
       </p>
       <form
-        action=''
-        className='flex flex-col gap-5 w-full md:max-w-[400px] mx-auto md:border-2 border-[#027600] shadow-[0px 0px 15px 0px #35BC5B] px-10 pt-20 md:p-10 md:rounded-[20px]'
+        onSubmit={handleSubmit}
+        className='flex flex-col gap-5 w-full md:max-w-[400px] mx-auto md:border-2 border-[#027600] shadow-[0px 0px 15px 0px #35BC5B] px-10 pt-10 md:pt-20 md:p-10 md:rounded-[20px]'
       >
         <div>
           <Input
@@ -26,7 +42,7 @@ const SignUp = () => {
             placeholder={'First name'}
             className='w-full'
             value={data.first_name}
-            onchange={(e) => setData({ ...data, first_name: e.target.value })}
+            onChange={(e) => setData({ ...data, first_name: e.target.value })}
           />
         </div>
         <div>
@@ -35,7 +51,7 @@ const SignUp = () => {
             placeholder={'Last name'}
             className='w-full'
             value={data.last_name}
-            onchange={(e) => setData({ ...data, last_name: e.target.value })}
+            onChange={(e) => setData({ ...data, last_name: e.target.value })}
           />
         </div>
         <div>
@@ -44,7 +60,16 @@ const SignUp = () => {
             placeholder={'E-mail'}
             className='w-full'
             value={data.email}
-            onchange={(e) => setData({ ...data, email: e.target.value })}
+            onChange={(e) => setData({ ...data, email: e.target.value })}
+          />
+        </div>
+        <div>
+          <Input
+            type={'text'}
+            placeholder={'Phone Number'}
+            className='w-full'
+            value={data.number}
+            onChange={(e) => setData({ ...data, number: e.target.value })}
           />
         </div>
         <div>
@@ -53,7 +78,7 @@ const SignUp = () => {
             type={'password'}
             placeholder={'Password'}
             value={data.password}
-            onchange={(e) => setData({ ...data, password: e.target.value })}
+            onChange={(e) => setData({ ...data, password: e.target.value })}
           />
         </div>
         <div>
@@ -62,13 +87,13 @@ const SignUp = () => {
             type={'password'}
             placeholder={'Confirm password'}
             value={data.re_password}
-            onchange={(e) => setData({ ...data, re_password: e.target.value })}
+            onChange={(e) => setData({ ...data, re_password: e.target.value })}
           />
         </div>
 
         <div>
           <Button
-            disabled={data.email === '' || data.password === ''}
+            disabled={disabledBtn}
             label='Receive Otp'
             type='submit'
             className='w-full'

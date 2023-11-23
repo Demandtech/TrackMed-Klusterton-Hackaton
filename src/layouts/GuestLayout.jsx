@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 
 Outlet
-const DashbpardLayout = () => {
+const GuestLayout = () => {
   return (
     <div>
       <Outlet />
@@ -9,4 +9,4 @@ const DashbpardLayout = () => {
   )
 }
 
-export default DashbpardLayout
+export default GuestLayout

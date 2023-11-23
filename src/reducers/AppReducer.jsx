@@ -1,9 +1,15 @@
 const AppReducer = (state, action) => {
   switch (action.type) {
-    case 'START_LOADING':
+    case 'TOGGLE_MODAL':
       return {
         ...state,
-        isLoading: true,
+        isModalOpen: action.payload,
+      }
+    case 'TOGGLE_SIDEBAR':
+      console.log('Here')
+      return {
+        ...state,
+        isSidebarOpen: action.payload,
       }
   }
 }
