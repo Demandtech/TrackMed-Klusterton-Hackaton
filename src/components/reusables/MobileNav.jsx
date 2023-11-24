@@ -1,34 +1,33 @@
-import React from "react";
-import { MobileMenuIcon } from "../svgs";
-import { NavLink } from "react-router-dom";
+import { MobileMenuIcon } from '../svgs'
+import { NavLink } from 'react-router-dom'
 
 const MobileNav = () => {
-  const mobileNavOpen = false;
+  //const mobileNavOpen = false
   return (
-    <div className="md:hidden">
-      {" "}
-      <nav className="mt-10 flex justify-between items-center px-2">
+    <div className='md:hidden'>
+      {' '}
+      <nav className='mt-10 flex justify-between items-center px-2'>
         <MobileMenuIcon />
-        <div className="flex gap-5">
-          <NavLink to="/auth/signup">
-            <div className=" border-primary100 border-[3px] rounded-[15px] px-5 py-2 cursor-pointer">
-              <p className="text-sm font-bold text-primary100 font-poppins">
+        <div className='flex gap-5'>
+          <div className=' border-primary100 border-[3px] rounded-[15px] py-2 w-[100px] text-center cursor-pointer'>
+            <NavLink to='/auth/signup'>
+              <p className='text-sm font-bold text-primary100 font-poppins'>
                 Register
               </p>
-            </div>
-          </NavLink>
+            </NavLink>
+          </div>
 
-          <NavLink to="/auth/login">
-            <div className="border-primary100 border-[3px] bg-primary100  rounded-[15px] px-5 py-2 cursor-pointer ">
-              <p className="text-sm font-bold text-slate-600 font-poppins">
+          <div className='border-primary100 border-[3px] bg-primary100  rounded-[15px] w-[100px] text-center py-2 cursor-pointer '>
+            <NavLink to='/auth/login'>
+              <p className='text-sm font-bold text-slate-600 font-poppins'>
                 Login
               </p>
-            </div>
-          </NavLink>
+            </NavLink>
+          </div>
         </div>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default MobileNav;
+export default MobileNav

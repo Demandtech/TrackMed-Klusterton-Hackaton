@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from 'react-router-dom'
 import {
   Login,
   SignUp,
@@ -9,64 +9,74 @@ import {
   DashboardProfile,
   DashboardProgress,
   About,
-} from "./pages";
-import { AuthLayout, DashboardLayout, GuestLayout } from "./layouts";
+  Contact,
+  Faqs,
+} from './pages'
+import { AuthLayout, DashboardLayout, GuestLayout } from './layouts'
 
 const router = createBrowserRouter([
   {
-    path: "/auth",
+    path: '/auth',
     element: <AuthLayout />,
     children: [
       {
-        path: "login",
+        path: 'login',
         element: <Login />,
       },
       {
-        path: "signup",
+        path: 'signup',
         element: <SignUp />,
       },
       {
-        path: "confirm/otp",
+        path: 'confirm/otp',
         element: <ConfirmOtp />,
       },
     ],
   },
   {
-    path: "/",
+    path: '/',
     element: <GuestLayout />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/about",
+        path: '/about',
         element: <About />,
+      },
+      {
+        path: '/faqs',
+        element: <Faqs />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
       },
     ],
   },
   {
-    path: "/dashboard",
+    path: '/dashboard',
     element: <DashboardLayout />,
     children: [
       {
-        path: "home",
+        path: 'home',
         element: <DashboardHome />,
       },
       {
-        path: "profile",
+        path: 'profile',
         element: <DashboardProfile />,
       },
       {
-        path: "progress",
+        path: 'progress',
         element: <DashboardProgress />,
       },
       {
-        path: "medical",
+        path: 'medical',
         element: <DashboardMedical />,
       },
     ],
   },
-]);
+])
 
-export default router;
+export default router
