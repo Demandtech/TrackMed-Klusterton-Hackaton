@@ -10,15 +10,19 @@ const initialState = {
   isAuthenticated: false,
 }
 
-export const UserProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState)
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT_USER' })
   }
 
+  const handleLoginUser = () => {
+    dispatch({ type: 'LOGIN_USER' })
+  }
+
   return (
-    <UserContext.Provider value={{ ...state, handleLogout }}>
+    <UserContext.Provider value={{ ...state, handleLogout, handleLoginUser }}>
       {children}
     </UserContext.Provider>
   )
@@ -27,3 +31,5 @@ export const UserProvider = ({ children }) => {
 UserProvider.propTypes = {
   children: PropTypes.node,
 }
+
+export default UserProvider
