@@ -1,9 +1,12 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
+import { GuestHeader } from '../components'
 
-Outlet
 const GuestLayout = () => {
+  const location = useLocation()
+
   return (
-    <div>
+    <div className='max-w-[1440px] mx-auto'>
+      {location.pathname !== '/' && <GuestHeader />}
       <Outlet />
     </div>
   )

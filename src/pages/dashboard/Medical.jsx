@@ -36,7 +36,7 @@ const Medical = () => {
       <div className='px-10 py-5 lg:pt-20 lg:max-w-[700px] lg:ml-20'>
         <form>
           <div className='grid lg:grid-cols-2  gap-5 w-full'>
-            <div className='form-control mb-5'>
+            <div className='form-control mb-5 w-full'>
               <label
                 className='mb-1 block text-sm font-medium'
                 htmlFor='nature_of_illness'
