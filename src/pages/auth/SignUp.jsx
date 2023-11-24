@@ -29,7 +29,7 @@ const SignUp = () => {
 
   return (
     <div className='text-center font-poppins pb-5'>
-      <p className='text-lg my-5 hidden md:block'>
+      <p className='text-lg mb-5 hidden md:block'>
         Welcome new user!! Please fill in the form correctly to get started
       </p>
       <form
@@ -38,6 +38,7 @@ const SignUp = () => {
       >
         <div>
           <Input
+            
             type={'text'}
             placeholder={'First name'}
             className='w-full'

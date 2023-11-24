@@ -1,17 +1,10 @@
-import { Link, Outlet } from 'react-router-dom'
-import { LogoIcon } from '../components/svgs'
-import { ConfirmationModal } from '../components'
+import { Outlet } from 'react-router-dom'
+import { ConfirmationModal, AuthHeader } from '../components'
 
 const AuthLayout = () => {
   return (
     <div className='max-w-[1440px] mx-auto relative'>
-      <Link
-        to='/'
-        className='items-center flex pl-10 pt-6 md:pt-8 sticky top-0 bg-inherit'
-      >
-        <LogoIcon />
-        <p className=' text-[#027600] font-bold font-orbitron'>TrackMed</p>
-      </Link>
+      <AuthHeader />
       <div className='mx-auto max-w-[600px]'>
         <Outlet />
       </div>
