@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 const Modal = ({ children, className, isModalOpen }) => {
-  console.log(isModalOpen)
   return (
     <div
       className={`bg-backdrop backdrop:blur-md fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center overflow-hidden transition-all duration-300 ${

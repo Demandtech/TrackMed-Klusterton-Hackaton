@@ -6,7 +6,6 @@ const AppReducer = (state, action) => {
         isModalOpen: action.payload,
       }
     case 'TOGGLE_SIDEBAR':
-      console.log('Here')
       return {
         ...state,
         isSidebarOpen: action.payload,
