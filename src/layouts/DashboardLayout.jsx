@@ -7,7 +7,7 @@ const DashboardLayout = () => {
   return (
     <div className='flex max-w-[1440px] min-h-screen relative'>
       <div
-        className={`transition-all duration-300 shadow-aside z-50 ${
+        className={`transition-all duration-300 shadow-aside z-[1000] ${
           isSidebarOpen
             ? 'w-full h-full absolute left-0 top-0 opacity-100'
             : 'w-0 md:fixed top-0 md:w-[270px] overflow-hidden opacity-0 md:opacity-100'
