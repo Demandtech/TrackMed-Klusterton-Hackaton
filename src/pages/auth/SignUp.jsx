@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Button, Input, Social } from '../components/reusables'
+import { Button, Input, Social } from '../../components/reusables'
 import { Link } from 'react-router-dom'
-import { useAppContext } from '../hooks'
+import { useAppContext } from '../../hooks'
 
 const SignUp = () => {
   const { toggleModal } = useAppContext()

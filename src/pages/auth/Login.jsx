@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Input, Social } from '../components/reusables'
+import { Button, Input, Social } from '../../components/reusables'
 import { Link } from 'react-router-dom'
 
 const Login = () => {

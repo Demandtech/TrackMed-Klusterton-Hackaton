@@ -18,6 +18,7 @@ export default {
         dark20: "#1E1E1E",
         primary80: '#027600',
         backdrop: 'rgba(0,0,0, 0.2)',
+        primary10: 'rgba(53, 188, 91, 0.50)',
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

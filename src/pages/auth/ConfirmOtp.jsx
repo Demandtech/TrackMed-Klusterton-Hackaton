@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Input, Button } from '../components/reusables'
+import { Input, Button } from '../../components/reusables'
 import { useNavigate } from 'react-router-dom'
 
 const ConfirmOtp = () => {

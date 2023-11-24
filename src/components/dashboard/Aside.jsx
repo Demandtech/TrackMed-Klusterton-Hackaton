@@ -14,12 +14,13 @@ useNavigate
 const Aside = () => {
   const { handleLogout } = useUserContext()
   const { toggleSidebar } = useAppContext()
+  const navigate = useNavigate()
 
   return (
     <aside className={`bg-white md:shadow-aside  font-poppins w-full h-full`}>
       <ul className='flex flex-col gap-5 h-full p-2 min-h-screen  w-full pt-24 md:pt-12 '>
         <div className='items-center gap-2 hidden md:flex'>
-          <UserIcon />
+          <UserIcon width='50' height='50' />
           <h5 className='font-bold text-2xl text-primary80'>Hi John</h5>
         </div>
         <li onClick={() => toggleSidebar(false)}>
@@ -63,7 +64,10 @@ const Aside = () => {
           className='mt-auto border-t-2 border-primary100 p-2.5'
         >
           <button
-            onClick={handleLogout}
+            onClick={() => {
+              handleLogout()
+              navigate('/')
+            }}
             type='button'
             className='flex justify-center gap-4  w-full'
           >
