@@ -2,9 +2,7 @@ import { createContext, useReducer } from 'react'
 import { UserReducer } from '../reducers'
 import PropTypes from 'prop-types'
 
-
 export const UserContext = createContext()
-
 
 const initialState = {
   isLoading: false,
@@ -13,8 +11,7 @@ const initialState = {
 }
 
 export const UserProvider = ({ children }) => {
- const [state, dispatch] = useReducer(UserReducer, initialState)
-
+  const [state, dispatch] = useReducer(UserReducer, initialState)
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT_USER' })
