@@ -6,3 +6,7 @@
   border-radius: 10px;
   background: #82f4a2;
 }
+
+input {
+  font-size: 16px;
+}

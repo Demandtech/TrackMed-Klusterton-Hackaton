@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Button, Input, Social } from '../../components/reusables'
 import { Link } from 'react-router-dom'
-import { useAppContext } from '../../hooks'
+import { useUserContext } from '../../hooks'
 
 const SignUp = () => {
-  const { toggleModal } = useAppContext()
+  const { registerUser } = useUserContext()
 
   const [data, setData] = useState({
     first_name: '',
@@ -22,9 +22,14 @@ const SignUp = () => {
     data.password == '' ||
     data.re_password == ''
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    toggleModal(true)
+    console.log(data)
+
+    const isSuccess = await registerUser(data)
+
+    console.log(isSuccess)
+    // toggleModal(true)
   }
 
   return (
@@ -38,7 +43,6 @@ const SignUp = () => {
       >
         <div>
           <Input
-            
             type={'text'}
             placeholder={'First name'}
             className='w-full'

@@ -1,7 +1,5 @@
 import { MobileNav, WebNav } from '../../components/reusables'
 import { logotext } from '../../assets/images'
-// import { PreLoader } from '../../components'
-// import { useEffect, useState } from 'react'
 
 const Home = () => {
   return (
