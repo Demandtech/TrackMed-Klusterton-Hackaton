@@ -9,6 +9,8 @@ import {
   DashboardProfile,
   DashboardProgress,
   About,
+  Contact,
+  Faq,
 } from "./pages";
 import { AuthLayout, DashboardLayout, GuestLayout } from "./layouts";
 
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/faqs",
+        element: <Faq />,
       },
     ],
   },

@@ -1,12 +1,16 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet } from "react-router-dom";
+import { MobileAside } from "../components/reusables";
 
-Outlet
+Outlet;
 const GuestLayout = () => {
   return (
-    <div>
-      <Outlet />
+    <div className="h-full relative">
+      <MobileAside />
+      <div className="">
+        <Outlet />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default GuestLayout
+export default GuestLayout;

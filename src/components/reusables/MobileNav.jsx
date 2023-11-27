@@ -1,9 +1,7 @@
 import React from "react";
 import { MobileMenuIcon } from "../svgs";
 import { NavLink } from "react-router-dom";
-
 const MobileNav = () => {
-  const mobileNavOpen = false;
   return (
     <div className="md:hidden">
       {" "}

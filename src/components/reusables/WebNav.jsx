@@ -8,9 +8,9 @@ const WebNav = () => {
       <nav className="mt-10 flex items-center justify-end gap-10 pr-10 max-[768px]:pr-5">
         <ul className="flex gap-10">
           <NavLink
-            to="."
+            to="/"
             className={({ isActive }) =>
-              isActive ? "underline text-white" : "hover:underline"
+              isActive ? "underline text-white" : "hover:underline text-white"
             }
           >
             <li
@@ -31,12 +31,26 @@ const WebNav = () => {
             </li>
           </NavLink>
 
-          <li className="font-poppins text-white lg:text-xl text-2xl  max-[768px]:text-lg font-normal cursor-pointer">
-            Contact Us
-          </li>
-          <li className="font-poppins text-white lg:text-xl text-2xl  max-[768px]:text-lg font-normal cursor-pointer">
-            FAQs
-          </li>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive ? "underline text-white" : "hover:underline text-white"
+            }
+          >
+            <li className="font-poppins text-white lg:text-xl text-2xl  max-[768px]:text-lg font-normal cursor-pointer">
+              Contact Us
+            </li>
+          </NavLink>
+          <NavLink
+            to="/faqs"
+            className={({ isActive }) =>
+              isActive ? "underline text-white" : "hover:underline text-white"
+            }
+          >
+            <li className="font-poppins text-white lg:text-xl text-2xl  max-[768px]:text-lg font-normal cursor-pointer">
+              FAQs
+            </li>
+          </NavLink>
         </ul>
         <div className="flex gap-10 max-[768px]:gap-5">
           <NavLink to="/auth/signup">
