@@ -1,16 +1,17 @@
-import { Outlet, useLocation } from 'react-router-dom'
-import { GuestHeader } from '../components'
-// import { useUserContext } from '../hooks'
-// import { useEffect } from 'react'
+import { Outlet } from "react-router-dom";
+import { MobileAside } from "../components/reusables";
 
+Outlet;
 const GuestLayout = () => {
-  const location = useLocation()
+  // const location = useLocation()
   return (
-    <div className='max-w-[1440px] mx-auto'>
-      {location.pathname !== '/' && <GuestHeader />}
-      <Outlet />
+    <div className="h-full relative">
+      <MobileAside />
+      <div className="">
+        <Outlet />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default GuestLayout
+export default GuestLayout;
