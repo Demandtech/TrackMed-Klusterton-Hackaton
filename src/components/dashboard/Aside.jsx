@@ -12,8 +12,8 @@ import { useAppContext } from '../../hooks'
 useNavigate
 
 const Aside = () => {
-  const { userLogout } = useUserContext()
-  const { toggleSidebar } = useAppContext()
+  const { userLogout, user } = useUserContext()
+  const { toggleSidebar} = useAppContext()
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -24,18 +24,26 @@ const Aside = () => {
     }
   }
 
+  const closeSidebar = (e) => {
+    const backdrop = e.target.classList.contains('aside')
+    if (!backdrop) return
+    toggleSidebar(false)
+  }
+
   return (
-    <aside className={`bg-white md:shadow-aside  font-poppins w-full h-full`}>
-      <ul className='flex flex-col gap-5 h-full p-2 min-h-screen  w-full pt-24 md:pt-12 '>
+    <aside
+      className={`shadow-aside  font-poppins  h-full bg-backdrop backdrop:blur-md z-0 aside`}
+      onClick={(e) => closeSidebar(e)}
+    >
+      <ul className='flex flex-col gap-5  h-full p-2 min-h-screen pt-24 md:pt-12 w-[270px] bg-white md:w-full z-10 shadow-aside'>
         <div className='items-center gap-2 hidden md:flex'>
           <UserIcon width='50' height='50' />
-          <h5 className='font-bold text-2xl text-primary80'>Hi John</h5>
+          <h5 className='font-bold text-2xl text-primary80'>
+            Hi {user?.firstName}
+          </h5>
         </div>
         <li onClick={() => toggleSidebar(false)}>
-          <NavLink
-            to={'/dashboard'}
-            className='flex justify-between p-2.5 active:bg-[#82F4A2]'
-          >
+          <NavLink to={'/dashboard'} className='flex justify-between p-2.5 '>
             <span className='text-primary80 text-sm'>Home</span>
             <HomeIcon />
           </NavLink>
