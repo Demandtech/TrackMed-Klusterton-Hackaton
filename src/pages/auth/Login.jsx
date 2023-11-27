@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useUserContext } from '../../hooks'
 
 const Login = () => {
-  const { handleLoginUser } = useUserContext()
+  const { loginUser } = useUserContext()
   const navigate = useNavigate()
 
   const [data, setData] = useState({
@@ -14,8 +14,12 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    handleLoginUser()
-    navigate('/dashboard/home')
+    if (!data.email || !data.password) return
+
+    const isSuccess = loginUser(data)
+    if (isSuccess) {
+      navigate('/dashboard')
+    }
   }
 
   return (

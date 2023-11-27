@@ -4,6 +4,8 @@ import { AppProvider } from './contexts/AppContext'
 import UserProvider from './contexts/UserContext'
 import { useEffect, useState } from 'react'
 import { PreLoader } from './components'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -21,11 +23,12 @@ function App() {
   }, [])
 
   return (
-    <UserProvider>
-      <AppProvider>
+    <AppProvider>
+      <UserProvider>
         {isLoading ? <PreLoader /> : <RouterProvider router={router} />}
-      </AppProvider>
-    </UserProvider>
+        <ToastContainer hideProgressBar={true} />
+      </UserProvider>
+    </AppProvider>
   )
 }
 
