@@ -10,6 +10,7 @@ const initialState = {
   isLoading: false,
   user: null,
   isAuthenticated: false,
+  token: null,
 }
 
 const UserProvider = ({ children }) => {
@@ -124,7 +125,7 @@ const UserProvider = ({ children }) => {
       }
       console.log(data.user)
       dispatch({ type: 'STOP_LOADING' })
-      dispatch({ type: 'GET_USER', payload: data.user })
+      dispatch({ type: 'GET_USER', payload: data })
       return true
     } catch (error) {
       console.log(error)

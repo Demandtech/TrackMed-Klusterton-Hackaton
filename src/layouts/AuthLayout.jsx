@@ -4,12 +4,12 @@ import { useUserContext } from '../hooks'
 import { useEffect } from 'react'
 
 const AuthLayout = () => {
-  const { isAuthenticated } = useUserContext()
+  const { isAuthenticated, token } = useUserContext()
   const navigate = useNavigate()
 
   useEffect(() => {
     const getUserInfo = async () => {
-      if (isAuthenticated) {
+      if (isAuthenticated && token) {
         return navigate('/dashboard')
       }
     }
