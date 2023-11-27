@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { HomeIcon, ProfileIcon } from "../svgs";
+// import { HomeIcon, ProfileIcon } from "../svgs";
 import { useAppHomeContext } from "../../hooks";
 
 const MobileAsideNav = () => {
