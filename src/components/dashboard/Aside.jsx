@@ -12,9 +12,17 @@ import { useAppContext } from '../../hooks'
 useNavigate
 
 const Aside = () => {
-  const { handleLogout } = useUserContext()
+  const { userLogout } = useUserContext()
   const { toggleSidebar } = useAppContext()
   const navigate = useNavigate()
+
+  const handleLogout = () => {
+    const isSuccess = userLogout()
+
+    if (isSuccess) {
+      navigate('/auth/login')
+    }
+  }
 
   return (
     <aside className={`bg-white md:shadow-aside  font-poppins w-full h-full`}>
@@ -25,7 +33,7 @@ const Aside = () => {
         </div>
         <li onClick={() => toggleSidebar(false)}>
           <NavLink
-            to={'/dashboard/home'}
+            to={'/dashboard'}
             className='flex justify-between p-2.5 active:bg-[#82F4A2]'
           >
             <span className='text-primary80 text-sm'>Home</span>
@@ -64,10 +72,7 @@ const Aside = () => {
           className='mt-auto border-t-2 border-primary100 p-2.5'
         >
           <button
-            onClick={() => {
-              handleLogout()
-              navigate('/')
-            }}
+            onClick={handleLogout}
             type='button'
             className='flex justify-center gap-4  w-full'
           >

@@ -1,30 +1,39 @@
 import { useState } from 'react'
 import { Button, Input, Social } from '../../components/reusables'
 import { Link } from 'react-router-dom'
-import { useAppContext } from '../../hooks'
+import { useUserContext, useAppContext } from '../../hooks'
 
 const SignUp = () => {
+  const { registerUser } = useUserContext()
   const { toggleModal } = useAppContext()
 
   const [data, setData] = useState({
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     re_password: '',
-    number: '',
+    phoneNumber: '',
   })
 
   const disabledBtn =
-    data.first_name == '' ||
-    data.last_name == '' ||
+    data.firstName == '' ||
+    data.lastName == '' ||
     data.email == '' ||
     data.password == '' ||
-    data.re_password == ''
+    data.re_password == '' ||
+    data.phoneNumber == ''
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    toggleModal(true)
+    try {
+      const isSuccess = await registerUser(data)
+      if (isSuccess) {
+        toggleModal(isSuccess)
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -38,12 +47,11 @@ const SignUp = () => {
       >
         <div>
           <Input
-            
             type={'text'}
             placeholder={'First name'}
             className='w-full'
-            value={data.first_name}
-            onChange={(e) => setData({ ...data, first_name: e.target.value })}
+            value={data.firstName}
+            onChange={(e) => setData({ ...data, firstName: e.target.value })}
           />
         </div>
         <div>
@@ -51,8 +59,8 @@ const SignUp = () => {
             type={'text'}
             placeholder={'Last name'}
             className='w-full'
-            value={data.last_name}
-            onChange={(e) => setData({ ...data, last_name: e.target.value })}
+            value={data.lastName}
+            onChange={(e) => setData({ ...data, lastName: e.target.value })}
           />
         </div>
         <div>
@@ -69,8 +77,8 @@ const SignUp = () => {
             type={'text'}
             placeholder={'Phone Number'}
             className='w-full'
-            value={data.number}
-            onChange={(e) => setData({ ...data, number: e.target.value })}
+            value={data.phoneNumber}
+            onChange={(e) => setData({ ...data, phoneNumber: e.target.value })}
           />
         </div>
         <div>

@@ -47,7 +47,7 @@ const Progress = () => {
                         : ` an alarm by`}
                     </span>
                     {info.duration && (
-                      <span className='font-bold'> ${info.duration} mins </span>
+                      <span className='font-bold'> {info.duration} mins </span>
                     )}
                   </p>
                 </li>

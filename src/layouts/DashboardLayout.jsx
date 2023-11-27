@@ -1,9 +1,20 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { Aside } from '../components/dashboard'
-import { useAppContext } from '../hooks'
+import { useAppContext, useUserContext } from '../hooks'
+import { useEffect } from 'react'
 
 const DashboardLayout = () => {
   const { isSidebarOpen } = useAppContext()
+  const { isAuthenticated } = useUserContext()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      return navigate('/auth/login')
+    }
+  }, [])
+
+ 
   return (
     <div className='flex max-w-[1440px] min-h-screen relative'>
       <div
