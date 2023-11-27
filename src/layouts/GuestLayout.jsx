@@ -3,6 +3,7 @@ import { MobileAside } from "../components/reusables";
 
 Outlet;
 const GuestLayout = () => {
+  // const location = useLocation()
   return (
     <div className="h-full relative">
       <MobileAside />

@@ -1,11 +1,12 @@
-export { default as Login } from "./Login";
-export { default as SignUp } from "./SignUp";
-export { default as Home } from "./Home";
-export { default as Contact } from "./Contact";
-export { default as About } from "./About";
-export { default as Faq } from "./Faq";
-export { default as ConfirmOtp } from "./ConfirmOtp";
-export { default as DashboardHome } from "./dashboard/Home";
-export { default as DashboardProfile } from "./dashboard/Profile";
-export { default as DashboardProgress } from "./dashboard/Progress";
-export { default as DashboardMedical } from "./dashboard/Medical";
+export { default as Login } from './auth/Login'
+export { default as SignUp } from './auth/SignUp'
+export { default as Home } from './guest/Home'
+export { default as About } from './guest/About'
+export { default as Contact } from './guest/Contact'
+export { default as Faqs } from './guest/Faqs'
+export { default as ConfirmOtp } from './auth/ConfirmOtp'
+export { default as DashboardHome } from './dashboard/Home'
+export { default as DashboardProfile } from './dashboard/Profile'
+export { default as DashboardProgress } from './dashboard/Progress'
+export { default as DashboardMedical } from './dashboard/Medical'
+

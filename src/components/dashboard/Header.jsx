@@ -4,24 +4,27 @@ import PropTypes from 'prop-types'
 
 const Header = ({ message }) => {
   const { toggleSidebar } = useAppContext()
+  const show = message.includes('Hi')
 
   return (
-    <div className='md:hidden  flex justify-between py-5 px-4 sticky top-0 bg-white'>
+    <div className='md:hidden  flex justify-between pb-5 px-4 sticky top-0 bg-white z-[100] pt-10'>
       <div className='flex items-center gap-2'>
         <button
           onClick={() => {
-            toggleSidebar(message)
+            toggleSidebar(true)
           }}
         >
           <MenuIcon />
         </button>
         <span className='text-primary80 font-bold text-sm'>{message}</span>
       </div>
-      <div>
-        <button>
-          <NotificationIcon />
-        </button>
-      </div>
+      {show && (
+        <div>
+          <button>
+            <NotificationIcon />
+          </button>
+        </div>
+      )}
     </div>
   )
 }

@@ -1,14 +1,12 @@
 import { useState, useRef, useEffect } from 'react'
-import { Input, Button } from '../components/reusables'
+import { Input, Button } from '../../components/reusables'
 import { useNavigate } from 'react-router-dom'
+import { useUserContext } from '../../hooks'
 
 const ConfirmOtp = () => {
   const [isMounted, setIsMounted] = useState(false)
+  const { user, verifyUser, isLoading } = useUserContext()
   const navigate = useNavigate()
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    navigate('/dashboard/home')
-  }
 
   const [otpValue, setOtpValue] = useState({
     first: '',
@@ -55,10 +53,33 @@ const ConfirmOtp = () => {
     otpValue.fourth === '' ||
     otpValue.fifth === ''
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!disabledBtn && user) {
+      const code = `${otpValue.first}${otpValue.second}${otpValue.third}${otpValue.fourth}${otpValue.fifth}`
+
+      const payload = {
+        code,
+      }
+      const isSuccess = await verifyUser(user?.id, payload)
+
+      console.log(isSuccess)
+
+      if (isSuccess) {
+        navigate('/auth/login')
+      }
+    }
+    // navigate('/dashboard/home')
+  }
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsMounted(true)
     }, 100)
+
+    if (isLoading) {
+      return <div>Loading</div>
+    }
 
     return () => clearTimeout(timeout)
   }, [])

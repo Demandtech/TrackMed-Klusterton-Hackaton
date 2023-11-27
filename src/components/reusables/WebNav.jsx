@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 const WebNav = () => {
@@ -53,21 +52,21 @@ const WebNav = () => {
           </NavLink>
         </ul>
         <div className="flex gap-10 max-[768px]:gap-5">
-          <NavLink to="/auth/signup">
-            <div className="border-primary100 border-[1.5px] rounded-[15px] max-[768px]:rounded-[10px] px-14 max-[768px]:px-8  py-2 m-auto cursor-pointer">
-              <p className="text-2xl max-[768px]:text-lg font-bold text-primary100 font-poppins">
+          <div className="border-primary100 border-[1.5px] rounded-[15px] max-[768px]:rounded-[10px] lg:w-[200px] text-center  py-2 m-auto cursor-pointer hover:text-white group hover:bg-primary100 transition-all duration-100">
+            <NavLink to="/auth/signup">
+              <p className="transition-colors duration-100 text-2xl max-[768px]:text-lg font-bold text-primary100 font-poppins group-hover:text-white">
                 Register
               </p>
-            </div>
-          </NavLink>
+            </NavLink>
+          </div>
 
-          <NavLink to="/auth/login">
-            <div className=" bg-primary100 rounded-[15px] border-none max-[768px]:rounded-[10px] px-14 max-[768px]:px-8  py-2 m-auto cursor-pointer">
-              <p className="text-2xl max-[768px]:text-lg font-bold text-slate-600 font-poppins">
+          <div className=" bg-primary100 rounded-[15px] max-[768px]:rounded-[10px]  py-2 cursor-pointer lg:w-[200px] text-center group hover:bg-transparent border-primary100 border-2">
+            <NavLink to="/auth/login">
+              <p className="text-2xl max-[768px]:text-lg font-bold text-slate-600 font-poppins group-hover:text-primary100 transition-colors duration-100">
                 Login
               </p>
-            </div>
-          </NavLink>
+            </NavLink>
+          </div>
         </div>
       </nav>
     </div>

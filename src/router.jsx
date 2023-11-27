@@ -10,7 +10,7 @@ import {
   DashboardProgress,
   About,
   Contact,
-  Faq,
+  Faqs,
 } from "./pages";
 import { AuthLayout, DashboardLayout, GuestLayout } from "./layouts";
 
@@ -46,12 +46,12 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/contact",
-        element: <Contact />,
+        path: "/faqs",
+        element: <Faqs />,
       },
       {
-        path: "/faqs",
-        element: <Faq />,
+        path: "/contact",
+        element: <Contact />,
       },
     ],
   },
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
-        path: "home",
+        index: true,
         element: <DashboardHome />,
       },
       {

@@ -1,10 +1,11 @@
-const UserSvg = () => {
+import PropTypes from 'prop-types'
+const UserSvg = ({ width = '50', height = '50' }) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='50'
-      height='50'
-      viewBox='0 0 50 50'
+      width={width}
+      height={height}
+      viewBox={`0 0 50 50`}
       fill='none'
     >
       <path
@@ -22,6 +23,11 @@ const UserSvg = () => {
       />
     </svg>
   )
+}
+
+UserSvg.propTypes = {
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
 }
 
 export default UserSvg
