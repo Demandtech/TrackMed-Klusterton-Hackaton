@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useEffect, useReducer } from 'react'
 import { UserReducer } from '../reducers'
 import PropTypes from 'prop-types'
 import customFetch from '../configs/axios'
@@ -16,16 +16,9 @@ const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState)
 
   const userLogout = async () => {
-    try {
-      const { data, status } = await customFetch.get('/auth/logout')
-      if (status === 200) {
-        toast.info(data.message)
-        dispatch({ type: 'LOGOUT_USER' })
-        localStorage.clear('Login')
-      }
-    } catch (error) {
-      console.log(error)
-    }
+    toast.info('Log out successfully')
+    dispatch({ type: 'LOGOUT_USER' })
+    localStorage.removeItem('token')
   }
 
   const registerUser = async (newUserData) => {
@@ -82,28 +75,30 @@ const UserProvider = ({ children }) => {
   }
 
   const loginUser = async (userData) => {
+    dispatch({ type: 'START_LOADING' })
     try {
-      dispatch({ type: 'START_LOADING' })
       const { data, status } = await customFetch.post('/auth/login', userData, {
         credentials: 'include',
+        'Content-Type': 'application/json',
       })
       if (status === 200) {
-        localStorage.setItem('Login', true)
-        const isSuccess = getUser()
+        localStorage.setItem('token', data.token)
+        const isSuccess = await getUser()
+        console.log(isSuccess)
         if (isSuccess) {
           dispatch({ type: 'LOGIN_SUCCESS' })
+          dispatch({ type: 'STOP_LOADING' })
           toast.success(data.message)
         }
         return isSuccess
       } else {
-        console.error('Signup failed with status:', status)
         dispatch({ type: 'LOGIN_FAILURE' })
         return false
       }
     } catch (error) {
-      if (error.status === 500) toast.error(error.response.data.error)
+      if (error.response.status === 500) return
+      toast.error(error.response.data.error)
       dispatch({ type: 'LOGIN_FAILURE' })
-
       return false
     } finally {
       dispatch({ type: 'STOP_LOADING' })
@@ -111,16 +106,36 @@ const UserProvider = ({ children }) => {
   }
 
   const getUser = async () => {
+    const token = localStorage.getItem('token')
+
+    if (!token) return false
+
+    dispatch({ type: 'START_LOADING' })
     try {
-      const { data } = await customFetch.get('/auth/user', {
-        credentials: 'include',
+      const { data, status } = await customFetch.get('/auth/user', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
 
-      console.log(data)
+      if (!status === 200 || data.user === null) {
+        dispatch({ type: 'STOP_LOADING' })
+        return false
+      }
+      console.log(data.user)
+      dispatch({ type: 'STOP_LOADING' })
+      dispatch({ type: 'GET_USER', payload: data.user })
+      return true
     } catch (error) {
       console.log(error)
+    } finally {
+      dispatch({ type: 'STOP_LOADING' })
     }
   }
+
+  useEffect(() => {
+    getUser()
+  }, [])
 
   return (
     <UserContext.Provider
@@ -130,6 +145,7 @@ const UserProvider = ({ children }) => {
         registerUser,
         loginUser,
         verifyUser,
+        getUser,
       }}
     >
       {children}

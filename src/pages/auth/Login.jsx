@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { Button, Input, Social } from '../../components/reusables'
 import { Link, useNavigate } from 'react-router-dom'
 import { useUserContext } from '../../hooks'
+import Loader from '../../components/reusables/Loader'
 
 const Login = () => {
-  const { loginUser } = useUserContext()
+  const { loginUser, isLoading } = useUserContext()
   const navigate = useNavigate()
 
   const [data, setData] = useState({
@@ -12,14 +13,17 @@ const Login = () => {
     password: '',
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!data.email || !data.password) return
-
-    const isSuccess = loginUser(data)
+    const isSuccess = await loginUser(data)
     if (isSuccess) {
       navigate('/dashboard')
     }
+  }
+
+  if (isLoading) {
+    return <Loader />
   }
 
   return (

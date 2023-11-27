@@ -5,7 +5,7 @@ import { useUserContext } from '../../hooks'
 
 const ConfirmOtp = () => {
   const [isMounted, setIsMounted] = useState(false)
-  const { user, verifyUser } = useUserContext()
+  const { user, verifyUser, isLoading } = useUserContext()
   const navigate = useNavigate()
 
   const [otpValue, setOtpValue] = useState({
@@ -76,6 +76,10 @@ const ConfirmOtp = () => {
     const timeout = setTimeout(() => {
       setIsMounted(true)
     }, 100)
+
+    if (isLoading) {
+      return <div>Loading</div>
+    }
 
     return () => clearTimeout(timeout)
   }, [])

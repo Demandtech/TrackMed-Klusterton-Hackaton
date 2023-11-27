@@ -1,5 +1,9 @@
 const UserReducer = (state, action) => {
   switch (action.type) {
+    case 'START_LOADING':
+      return { ...state, isLoading: true }
+    case 'STOP_LOADING':
+      return { ...state, isLoading: false }
     case 'LOGOUT_USER':
       return {
         ...state,
@@ -17,6 +21,12 @@ const UserReducer = (state, action) => {
       return {
         ...state,
         isAuthenticated: true,
+      }
+    case 'GET_USER':
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload,
       }
     default:
       return state
