@@ -14,7 +14,7 @@ const DashboardLayout = () => {
       const isAuthen = await getUser()
       if (isAuthen) {
         return navigate('/dashboard')
-      }else {
+      } else {
         return navigate('/auth/login')
       }
     }

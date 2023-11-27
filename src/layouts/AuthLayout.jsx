@@ -11,8 +11,6 @@ const AuthLayout = () => {
     const getUserInfo = async () => {
       if (isAuthenticated) {
         return navigate('/dashboard')
-      } else {
-        return navigate('auth/login')
       }
     }
     getUserInfo()
